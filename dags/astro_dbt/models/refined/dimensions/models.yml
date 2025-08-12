@@ -1,0 +1,176 @@
+version: "2"
+
+models:
+
+  - name: dim_customer
+    description: >
+      Dimensional table that stores customer information for analytical purposes, enabling the 
+      identification and segmentation of customers across data model.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - id_customer
+            - id_distinctive_customer
+    columns:
+
+      - name: id_distinctive_customer
+        description: >
+          Unique identifier for each customer, serving as the table's primary key.
+          Used for identifying and referencing the customer in other tables.
+        data_tests:
+          - not_null
+
+      - name: id_customer
+        description: Unique identifier of the costumer.
+        data_tests:
+          - not_null
+      
+      - name: abbr_customer_zip_code
+        description: First five digits of customer's ZIP code, used for regional grouping.
+
+      - name: abbr_customer_state
+        description: Abbreviation of the state corresponding to the customer's address.
+
+      - name: nm_customer_city
+        description: Name of the city where the customer resides.
+
+      - name: processing_date
+        description: Timestamp indicating when the table was processed.
+
+  - name: dim_geolocation
+    description: >
+      Dimensional table containing geographic information based on ZIP code prefixes.
+      Used to support location-based analysis.
+    columns:
+
+      - name: id_geolocation
+        description: >
+          Unique identifier for each geolocation, serving as the table's primary key.
+          Used for identifying and referencing the geolocation in other tables.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: abbr_zip_code
+        description: First five digits of the ZIP code, used to approximate geographic region.
+
+      - name: abbr_state
+        description: State abbreviation corresponding to the city in the ZIP code prefix.
+
+      - name: vl_latitude
+        description: Latitude coordinate associated with the ZIP code prefix.
+
+      - name: vl_longitude
+        description: Longitude coordinate associated with the ZIP code prefix.
+
+      - name: nm_city
+        description: City name corresponding to the ZIP code prefix.
+      
+      - name: processing_date
+        description: Timestamp indicating when the table was processed.
+
+  - name: dim_order_reviews
+    description: >
+      Dimensional table containing customer satisfaction reviews, including score, timestamps, 
+      and optional written feedback for each order.
+    columns:
+
+      - name: id_review
+        description: >
+          Unique identifier for each order review, serving as the table's primary key.
+          Used for identifying and referencing the order review in other tables.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: id_order
+        description: Unique order identifier.
+
+      - name: dh_review_create
+        description: Shows the date in which the satisfaction survey was sent to the customer.
+
+      - name: dh_review_answer
+        description: Shows satisfaction survey answer timestamp.
+
+      - name: vl_review_score
+        description: Note ranging from 1 to 5 given by the customer on a satisfaction survey.
+        data_tests:
+          - accepted_values:
+              values: [1,2,3,4,5]
+              quote: false
+
+      - name: nm_review_comment_title
+        description: Comment title from the review left by the customer, in Portuguese.
+
+      - name: nm_review_comment_message
+        description: Comment mensage from the review left by the customer, in Portuguese.
+      
+      - name: processing_date
+        description: Timestamp indicating when the table was processed.
+
+  - name: dim_products
+    description: >
+      Dimensional table containing product-level attributes such as category, name 
+      and description length, number of photos, physical dimensions, and weight. 
+    columns:
+
+      - name: id_product
+        description: >
+          Unique identifier for each product, serving as the table's primary key.
+          Used for identifying and referencing the product in other tables.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: tp_product_category
+        description: Root category of product.
+
+      - name: qt_product_name_lenght
+        description: Number of characters extracted from the product name.
+
+      - name: qt_product_description_lenght
+        description: Number of characters extracted from the product description.
+
+      - name: qt_product_photos_qty
+        description: Number of product published photos.
+
+      - name: vl_product_weight_g
+        description: Product weight measured in grams.
+
+      - name: vl_product_length_cm
+        description: Product lenght measured in centimeters.
+
+      - name: vl_product_height_cm
+        description: Product height measured in centimeters.
+
+      - name: vl_product_width_cm
+        description: Product width measured in centimeters.
+      
+      - name: processing_date
+        description: Timestamp indicating when the table was processed.
+
+  - name: dim_sellers
+    description: >
+      Dimensional table that stores sellers information for analytical purposes, enabling the 
+      identification and segmentation of sellers across data model.
+    columns:
+
+      - name: id_seller
+        description: >
+          Unique identifier for each seller, serving as the table's primary key.
+          Used for identifying and referencing the seller in other tables.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: abbr_seller_zip_code
+        description: First five digits of seller's ZIP code, used for regional grouping.
+
+      - name: abbr_seller_state
+        description: Abbreviation of the state corresponding to the seller's address.
+
+      - name: nm_seller_city
+        description: Name of the city where the seller resides.
+      
+      - name: processing_date
+        description: Timestamp indicating when the table was processed.

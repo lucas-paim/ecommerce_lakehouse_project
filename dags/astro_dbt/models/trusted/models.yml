@@ -1,0 +1,11 @@
+version: "2"
+
+models:
+  - name: tru_customer
+  - name: tru_geolocation
+  - name: tru_order_items
+  - name: tru_order_payments
+  - name: tru_order_reviews
+  - name: tru_orders
+  - name: tru_products
+  - name: tru_sellers

@@ -1,0 +1,95 @@
+version: "2"
+
+models:
+
+  - name: fact_order_items
+    description: >
+      Fact table containing detailed data on individual items within customer orders, including 
+      product, seller, pricing, freight, and shipping information.
+    columns:
+
+      - name: sk_order_item
+        description: >
+          Unique identifier for each order item, serving as the table's primary key.
+          It's a surrogate key, built through the hashing of the column "id_order" and "id_order_item".
+        data_tests:
+          - unique
+          - not_null
+
+      - name: id_order
+        description: Order unique identifier.
+
+      - name: id_order_item
+        description: Sequential number identifying number of items included in the same order.
+
+      - name: id_product
+        description: Product unique identifier.
+
+      - name: id_seller
+        description: Seller unique identifier.
+
+      - name: dh_ship_limit_date
+        description: Shows the seller shipping limit date for handling the order over to the logistic partner.
+
+      - name: vl_price
+        description: Item price.
+
+      - name: vl_freight_value
+        description: > 
+          Item freight value item.
+          If an order has more than one item the freight value is splitted between items.
+      
+      - name: processing_date
+        description: Timestamp indicating when the table was processed.
+  - name: fact_orders
+    description: >
+      Fact table that captures comprehensive details of customer orders, including 
+      key timestamps (purchase, payment approval, shipping, and delivery) and 
+      payment information (method, installments, and total value). 
+    columns:
+
+      - name: id_order
+        description: >
+          Unique identifier for each order, serving as the table's primary key.
+          Used for identifying and referencing the order in other tables.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: id_customer
+        description: Key to the customer dataset. Each order has a unique cusstomer_id.
+
+      - name: dh_order_purchase
+        description: Shows the order purchase timestamp.
+
+      - name: dh_order_approved_at
+        description: Shows the payment approval timestamp.
+
+      - name: dh_order_delivered_carrier
+        description: Shows the order posting timestamp. When it was handled to the logistic partner.
+
+      - name: dh_order_delivered_customer
+        description: Shows the actual order delivery date to the customer.
+
+      - name: dh_order_estimated_delivery
+        description: Shows the estimated delivery date that was informed to the customer at the purchase moment.
+
+      - name: fl_order_status
+        description: Reference to the order status (delivered, shipped, etc).
+      
+      - name: nr_payment_sequential
+        description: >
+          A customer may pay an order with more than one payment method.
+          If he does so, a sequence will be created to accommodate all payments.
+
+      - name: nr_payment_installments
+        description: Number of installments chosen by the customer.
+
+      - name: tp_payment_type
+        description: Method of payment chosen by the customer.
+
+      - name: vl_payment_value
+        description: Transaction value.
+
+      - name: processing_date
+        description: Timestamp indicating when the table was processed.

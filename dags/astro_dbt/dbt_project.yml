@@ -1,0 +1,31 @@
+name: 'etl_dbt'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'etl_dbt'
+
+# These configurations specify where dbt should look for different types of files.s
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# Directories to be removed by 'dbt clean'
+clean-targets:         
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  etl_dbt:
+    staging:
+      +materialized: table
+      +schema: staging
+    trusted:
+      +materialized: table
+      +schema: trusted
+    refined:
+      +materialized: table
+      +schema: refined

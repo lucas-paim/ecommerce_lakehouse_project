@@ -1,0 +1,15 @@
+version: "2"
+sources:
+  - name: raw_data
+    database: etl_db
+    schema: raw_data
+
+    tables:
+      - name: tb_customer
+      - name: tb_geolocation
+      - name: tb_order_items
+      - name: tb_order_payments
+      - name: tb_order_reviews
+      - name: tb_orders
+      - name: tb_products
+      - name: tb_sellers

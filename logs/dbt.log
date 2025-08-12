@@ -1,0 +1,48 @@
+[0m14:13:28.532820 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x774ce8f685f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x774ce87db890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x774ce90b9ac0>]}
+
+
+============================== 14:13:28.537948 | 5d5a31d6-cc6c-49f3-b37f-f8b7418a0458 ==============================
+[0m14:13:28.537948 [info ] [MainThread]: Running with dbt=1.9.4
+[0m14:13:28.538424 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/home/lpaim/.dbt', 'log_path': 'logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt run', 'send_anonymous_usage_stats': 'True'}
+[0m14:13:28.539135 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lpaim/astro-etl/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m14:13:28.541334 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.06543253, "process_in_blocks": "27272", "process_kernel_time": 0.501567, "process_mem_max_rss": "96144", "process_out_blocks": "8", "process_user_time": 0.780033}
+[0m14:13:28.541797 [debug] [MainThread]: Command `dbt run` failed at 14:13:28.541707 after 0.07 seconds
+[0m14:13:28.542131 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x774ce86f7290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x774ce90b9ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x774ce85d8950>]}
+[0m14:13:28.542484 [debug] [MainThread]: Flushing usage events
+[0m14:13:29.731603 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:28:32.030155 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b5943e189b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b594607bda0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b5945f60c50>]}
+
+
+============================== 17:28:32.037671 | 00b5f693-ecb2-4b09-b811-0a49504183e0 ==============================
+[0m17:28:32.037671 [info ] [MainThread]: Running with dbt=1.9.4
+[0m17:28:32.038403 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': '/home/lpaim/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt run --select stg_customer', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m17:28:32.038834 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lpaim/astro-etl/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m17:28:32.039972 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.050129216, "process_in_blocks": "232", "process_kernel_time": 0.129195, "process_mem_max_rss": "96056", "process_out_blocks": "16", "process_user_time": 1.044333}
+[0m17:28:32.040402 [debug] [MainThread]: Command `dbt run` failed at 17:28:32.040314 after 0.05 seconds
+[0m17:28:32.040897 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b5943a7c140>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b5943e189b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b5943d6e090>]}
+[0m17:28:32.041244 [debug] [MainThread]: Flushing usage events
+[0m17:28:32.662269 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:25:56.175383 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b792d91f3b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b792d8de5a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b792d8de210>]}
+
+
+============================== 09:25:56.182524 | 88a7782d-a7e9-4747-a320-b0e991273416 ==============================
+[0m09:25:56.182524 [info ] [MainThread]: Running with dbt=1.9.3
+[0m09:25:56.183558 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': '/home/lpaim/.dbt', 'log_path': 'logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --full-refresh --select tru_sellers', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m09:25:56.184484 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lpaim/astro-etl/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m09:25:56.185594 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.053942863, "process_in_blocks": "16", "process_kernel_time": 0.103078, "process_mem_max_rss": "99624", "process_out_blocks": "8", "process_user_time": 1.137677}
+[0m09:25:56.186251 [debug] [MainThread]: Command `dbt run` failed at 09:25:56.186038 after 0.05 seconds
+[0m09:25:56.186558 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b792ceddd60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b792d91f3b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b792d430d70>]}
+[0m09:25:56.186844 [debug] [MainThread]: Flushing usage events
+[0m09:25:56.767141 [debug] [MainThread]: An error was encountered while trying to flush usage events

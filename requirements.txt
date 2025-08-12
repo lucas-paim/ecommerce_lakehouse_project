@@ -1,0 +1,5 @@
+astronomer-cosmos
+apache-airflow
+apache-airflow-providers-postgres
+apache-airflow-providers-amazon
+astro-sdk-python

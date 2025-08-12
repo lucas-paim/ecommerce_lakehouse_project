@@ -1,0 +1,120 @@
+version: "2"
+
+models:
+
+  - name: agr_orders_by_customer
+    description: > 
+      Aggregated metrics for each customer based on their purchasing behavior. 
+      This table provides insights into order frequency, spending, and customer lifetime value.
+
+    columns:
+
+      - name: "key"
+        description: >
+          Unique identifier for each order item, serving as the table's primary key.
+          It's a surrogate key, built through the hashing of the column "order_id" (id_order) and "order_item_id" (id_order_item).
+        data_tests:
+          - unique
+          - not_null
+
+      - name: dt_first_purchase
+        description: >
+          Date of the customer's first recorded purchase.
+
+      - name: dt_last_purchase
+        description: >
+          Date of the customer's most recent purchase.
+
+      - name: nr_days_since_last_purchase
+        description: >
+          Number of days between the customer's last purchase and the current processing date.
+
+      - name: qt_total_orders
+        description: >
+          Total number of orders placed by the customer.
+
+      - name: vl_avg_ticket
+        description: >
+          Average amount spent per order by the customer.
+
+      - name: vl_total_spent
+        description: >
+          Total amount spent by the customer across all orders.
+
+      - name: vl_avg_review_score
+        description: > 
+          Average review score given by the customer across all their orders.
+      
+      - name: processing_date
+        description: >
+          Timestamp indicating when the table was processed.
+        
+  - name: agr_products_by_order
+    description: >
+      Aggregated data about products at the order-item level, including delivery time, revenue, and categorical attributes to support fulfillment and performance analysis.
+
+    columns:
+
+      - name: key
+        description: >
+          Unique identifier for each order, serving as the table's primary key.
+          It is a surrogate key, built trough the hashing of the column "id_order" and "id_order_item".
+        data_tests:
+          - unique
+          - not_null
+
+      - name: id_order
+        description: >
+          Unique identifier for the order to which the item belongs.
+
+      - name: id_order_item
+        description: >
+          Identifier for the specific item within the order.
+
+      - name: id_product
+        description: >
+          Identifier for the specific product within the order.
+
+      - name: id_seller
+        description: >
+          Identifier for the specific seller within the order.
+
+      - name: fl_order_delayed
+        description: >
+          Boolean flag indicating whether the order was delivered after the estimated delivery date.
+
+      - name: fl_order_status
+        description: >
+          Current status of the order (e.g., delivered, shipped, canceled).
+
+      - name: nr_days_delivery
+        description: >
+          Total number of days between purchase and delivery.
+
+      - name: nr_days_to_ship
+        description: >
+          Number of days between purchase date and the shipping date.
+
+      - name: abbr_seller_state
+        description: >
+          Abbreviation of the seller's state.
+
+      - name: tp_product_category
+        description: >
+          Category of the product sold in the order item.
+
+      - name: vl_total_price
+        description: >
+          Total price paid for the order item, including freight.
+
+      - name: vl_net_revenue
+        description: >
+          Net revenue for the order item, excluding freight costs.
+
+      - name: nm_seller_city
+        description: >
+          Name of the city where the seller is located.
+
+      - name: processing_date
+        description: >
+          Timestamp indicating when the table was processed.
